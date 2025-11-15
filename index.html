@@ -1,0 +1,421 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>{{GROUP_NAME}} - Discord Community</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta
+    name="description"
+    content="A simple way for parents to stay connected and informed through our Discord community."
+  />
+  <style>
+    :root {
+      --bg: #f5f5f7;
+      --card-bg: #ffffff;
+      --accent: #5865f2; /* Discord-ish */
+      --accent-soft: #e0e4ff;
+      --text-main: #111827;
+      --text-muted: #6b7280;
+      --border: #e5e7eb;
+      --radius-lg: 16px;
+      --radius-xl: 24px;
+      --shadow-soft: 0 16px 40px rgba(0, 0, 0, 0.08);
+      --max-width: 920px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        sans-serif;
+      background: radial-gradient(circle at top, #e5ebff, #f5f5f7 55%);
+      color: var(--text-main);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .page {
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      padding: 32px 16px 48px;
+    }
+
+    .shell {
+      width: 100%;
+      max-width: var(--max-width);
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 32px;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.7);
+      border: 1px solid rgba(88, 101, 242, 0.15);
+      font-size: 12px;
+      color: var(--text-muted);
+      backdrop-filter: blur(8px);
+    }
+
+    .badge-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: #22c55e;
+    }
+
+    h1 {
+      margin: 16px 0 10px;
+      font-size: clamp(28px, 4vw, 36px);
+      letter-spacing: -0.03em;
+    }
+
+    .subtitle {
+      margin: 0;
+      font-size: 15px;
+      color: var(--text-muted);
+      max-width: 540px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+      gap: 24px;
+      margin-top: 28px;
+    }
+
+    @media (max-width: 800px) {
+      .layout {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .card {
+      background: var(--card-bg);
+      border-radius: var(--radius-xl);
+      padding: 20px 22px;
+      box-shadow: var(--shadow-soft);
+      border: 1px solid var(--border);
+    }
+
+    .card + .card {
+      margin-top: 16px;
+    }
+
+    .primary-card {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .primary-card::before {
+      content: "";
+      position: absolute;
+      inset: -40%;
+      opacity: 0.08;
+      background:
+        radial-gradient(circle at 0% 0%, #5865f2, transparent 60%),
+        radial-gradient(circle at 100% 0%, #22c55e, transparent 55%);
+      pointer-events: none;
+    }
+
+    .primary-inner {
+      position: relative;
+      z-index: 1;
+    }
+
+    h2 {
+      margin: 0 0 12px;
+      font-size: 18px;
+    }
+
+    p {
+      margin: 0;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    .muted {
+      color: var(--text-muted);
+    }
+
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 14px;
+      margin-top: 18px;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 10px 18px;
+      border-radius: 999px;
+      border: none;
+      cursor: pointer;
+      background: var(--accent);
+      color: white;
+      font-size: 15px;
+      font-weight: 600;
+      text-decoration: none;
+      box-shadow: 0 10px 24px rgba(88, 101, 242, 0.5);
+    }
+
+    .btn-primary span.icon {
+      font-size: 16px;
+    }
+
+    .cta-note {
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 8px;
+      margin-top: 18px;
+      font-size: 13px;
+    }
+
+    @media (max-width: 640px) {
+      .steps {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .step {
+      background: rgba(255, 255, 255, 0.8);
+      border-radius: 14px;
+      padding: 8px 10px;
+      border: 1px solid rgba(148, 163, 184, 0.3);
+    }
+
+    .step-label {
+      font-weight: 600;
+      font-size: 12px;
+      margin-bottom: 4px;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 8px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      font-size: 11px;
+      color: #111827;
+      border: 1px solid rgba(88, 101, 242, 0.3);
+      margin-top: 10px;
+    }
+
+    .pill-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: var(--accent);
+    }
+
+    .list {
+      padding-left: 18px;
+      margin: 6px 0 0;
+      font-size: 14px;
+      color: var(--text-muted);
+    }
+
+    .list li {
+      margin-bottom: 4px;
+    }
+
+    .faq-item + .faq-item {
+      margin-top: 10px;
+      border-top: 1px dashed var(--border);
+      padding-top: 10px;
+    }
+
+    .faq-q {
+      font-weight: 600;
+      font-size: 14px;
+      margin-bottom: 4px;
+    }
+
+    footer {
+      margin-top: 28px;
+      text-align: center;
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    a {
+      color: var(--accent);
+    }
+
+    code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+        "Liberation Mono", "Courier New", monospace;
+      font-size: 12px;
+      background: #f3f4ff;
+      border-radius: 6px;
+      padding: 2px 5px;
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="shell">
+      <header>
+        <div class="badge">
+          <span class="badge-dot"></span>
+          <span>Online community for parents of {{GROUP_NAME}}</span>
+        </div>
+        <h1>{{GROUP_NAME}} Parent Discord</h1>
+        <p class="subtitle">
+          A simple, private space for parents to ask questions, share resources,
+          and stay informed about what is happening at school.
+        </p>
+      </header>
+
+      <div class="layout">
+        <!-- Left - main content -->
+        <section class="primary-card card">
+          <div class="primary-inner">
+            <h2>Join the Discord community</h2>
+            <p class="muted">
+              Discord is like a group chat plus notice board. You can use it
+              in your browser or install the free app on your phone or computer.
+            </p>
+
+            <div class="cta-row">
+              <a
+                class="btn-primary"
+                href="{{DISCORD_INVITE_URL}}"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <span class="icon">💬</span>
+                <span>Open the Discord invite</span>
+              </a>
+              <div class="cta-note">
+                New to Discord? That is normal. Most parents are. You can ask
+                for help once you join, or by email.
+              </div>
+            </div>
+
+            <div class="steps">
+              <div class="step">
+                <div class="step-label">1. Open the invite</div>
+                <div class="muted">
+                  Click the button above. If you do not have an account yet,
+                  Discord will walk you through creating one.
+                </div>
+              </div>
+              <div class="step">
+                <div class="step-label">2. Choose how to use it</div>
+                <div class="muted">
+                  You can stay in your web browser or install the Discord app
+                  for easier access on your phone.
+                </div>
+              </div>
+              <div class="step">
+                <div class="step-label">3. Visit the “Start Here” channel</div>
+                <div class="muted">
+                  Inside the server, look for <code>#start-here</code> for a
+                  short guide and how to set notifications.
+                </div>
+              </div>
+            </div>
+
+            <div class="pill">
+              <span class="pill-dot"></span>
+              <span>Need help? Email {{CONTACT_EMAIL}} for one-on-one setup.</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- Right - secondary content -->
+        <section>
+          <div class="card">
+            <h2>What you can use this for</h2>
+            <ul class="list">
+              <li>Get announcements and reminders from the parent group</li>
+              <li>Ask other parents questions about school life</li>
+              <li>Share resources, tips, and local information</li>
+              <li>Coordinate volunteers and events</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h2>Frequently asked questions</h2>
+
+            <div class="faq-item">
+              <div class="faq-q">Do I have to be “tech savvy”?</div>
+              <p class="muted">
+                No. If you can use email or text messaging, you can use Discord.
+                We have volunteers who can help you get set up.
+              </p>
+            </div>
+
+            <div class="faq-item">
+              <div class="faq-q">Is Discord free?</div>
+              <p class="muted">
+                Yes. You do not have to pay for anything to join or use this server.
+              </p>
+            </div>
+
+            <div class="faq-item">
+              <div class="faq-q">What about notifications?</div>
+              <p class="muted">
+                By default, our server is set so that you only get notified when
+                you are mentioned. You can mute channels or adjust alerts at any time.
+                There are simple instructions in <code>#start-here</code>.
+              </p>
+            </div>
+
+            <div class="faq-item">
+              <div class="faq-q">I do not want to use Discord. Can I still stay informed?</div>
+              <p class="muted">
+                Yes. We can send important updates by email. Contact us at
+                <a href="mailto:{{CONTACT_EMAIL}}">{{CONTACT_EMAIL}}</a>
+                and ask to receive email updates.
+              </p>
+            </div>
+          </div>
+
+          <div class="card">
+            <h2>Privacy and safety</h2>
+            <p class="muted">
+              This server is for parents, guardians, and invited staff of
+              {{GROUP_NAME}}.
+              We ask everyone to:
+            </p>
+            <ul class="list">
+              <li>Be respectful and kind in all conversations</li>
+              <li>Protect student privacy and avoid sharing sensitive information</li>
+              <li>Contact the moderators if something makes you uncomfortable</li>
+            </ul>
+          </div>
+        </section>
+      </div>
+
+      <footer>
+        Questions or feedback? Email
+        <a href="mailto:{{CONTACT_EMAIL}}">{{CONTACT_EMAIL}}</a>.
+      </footer>
+    </div>
+  </div>
+</body>
+</html>
