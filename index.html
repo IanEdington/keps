@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <title>{{GROUP_NAME}} - Discord Community</title>
+  <title>KEPS Parents - Discord Community</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta
     name="description"
@@ -184,17 +184,11 @@
     }
 
     .steps {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
+      display: flex;
+      flex-direction: column;
       gap: 8px;
       margin-top: 18px;
       font-size: 13px;
-    }
-
-    @media (max-width: 640px) {
-      .steps {
-        grid-template-columns: minmax(0, 1fr);
-      }
     }
 
     .step {
@@ -280,9 +274,9 @@
       <header>
         <div class="badge">
           <span class="badge-dot"></span>
-          <span>Online community for parents of {{GROUP_NAME}}</span>
+          <span>Online community for KEPS parents</span>
         </div>
-        <h1>{{GROUP_NAME}} Parent Discord</h1>
+        <h1>KEPS Parents Discord</h1>
         <p class="subtitle">
           A simple, private space for parents to ask questions, share resources,
           and stay informed about what is happening at school.
@@ -297,51 +291,63 @@
             <p class="muted">
               Discord is like a group chat plus notice board. You can use it
               in your browser or install the free app on your phone or computer.
+              When you join, you will see a very short screen with a couple
+              questions. This is just a quick check to confirm you are part of
+              the KEPS parent community.
+            </p>
+
+            <p class="muted" style="margin-top: 10px;">
+              New to Discord? That is normal. Most parents are. If you do not
+              have a Discord account yet, you will be asked to create and
+              verify one (usually by confirming your email or phone) before
+              you can join the server. You can always ask other KEPS parents
+              for help if you get stuck.
             </p>
 
             <div class="cta-row">
               <a
                 class="btn-primary"
-                href="{{DISCORD_INVITE_URL}}"
+                href="https://discord.gg/MZ8QByYxF5"
                 target="_blank"
                 rel="noopener noreferrer"
               >
                 <span class="icon">💬</span>
-                <span>Open the Discord invite</span>
+                <span>Join</span>
               </a>
-              <div class="cta-note">
-                New to Discord? That is normal. Most parents are. You can ask
-                for help once you join, or by email.
-              </div>
             </div>
 
             <div class="steps">
               <div class="step">
-                <div class="step-label">1. Open the invite</div>
+                <div class="step-label">
+                  1. Create or log into your Discord account
+                </div>
                 <div class="muted">
                   Click the button above. If you do not have an account yet,
-                  Discord will walk you through creating one.
+                  Discord will walk you through creating and verifying one
+                  first.
                 </div>
               </div>
               <div class="step">
-                <div class="step-label">2. Choose how to use it</div>
+                <div class="step-label">2. Apply to join the server</div>
                 <div class="muted">
-                  You can stay in your web browser or install the Discord app
-                  for easier access on your phone.
+                  After you are logged in, you will see a short application
+                  form. Answer the questions so we can confirm you are part of
+                  KEPS Parents.
                 </div>
               </div>
               <div class="step">
-                <div class="step-label">3. Visit the “Start Here” channel</div>
+                <div class="step-label">3. Visit the “Getting Started” channel</div>
                 <div class="muted">
-                  Inside the server, look for <code>#start-here</code> for a
-                  short guide and how to set notifications.
+                  Once your application is approved, open the server and look
+                  for <code>#getting-started</code> for a short guide and how to
+                  set notifications.
                 </div>
               </div>
             </div>
 
             <div class="pill">
               <span class="pill-dot"></span>
-              <span>Need help? Email {{CONTACT_EMAIL}} for one-on-one setup.</span>
+              <span>Need help? Meet Ian Edington on the playground for one-on-one setup.</span>
             </div>
           </div>
         </section>
@@ -351,7 +357,6 @@
           <div class="card">
             <h2>What you can use this for</h2>
             <ul class="list">
-              <li>Get announcements and reminders from the parent group</li>
               <li>Ask other parents questions about school life</li>
               <li>Share resources, tips, and local information</li>
               <li>Coordinate volunteers and events</li>
@@ -365,7 +370,6 @@
               <div class="faq-q">Do I have to be “tech savvy”?</div>
               <p class="muted">
                 No. If you can use email or text messaging, you can use Discord.
-                We have volunteers who can help you get set up.
               </p>
             </div>
 
@@ -381,16 +385,16 @@
               <p class="muted">
                 By default, our server is set so that you only get notified when
                 you are mentioned. You can mute channels or adjust alerts at any time.
-                There are simple instructions in <code>#start-here</code>.
+                There are simple instructions in <code>#getting-started</code>.
               </p>
             </div>
 
             <div class="faq-item">
               <div class="faq-q">I do not want to use Discord. Can I still stay informed?</div>
               <p class="muted">
-                Yes. We can send important updates by email. Contact us at
-                <a href="mailto:{{CONTACT_EMAIL}}">{{CONTACT_EMAIL}}</a>
-                and ask to receive email updates.
+                Yes. You can still hear about important things through school
+                channels and other parents. This Discord is just an extra,
+                optional way to stay connected.
               </p>
             </div>
           </div>
@@ -399,21 +403,25 @@
             <h2>Privacy and safety</h2>
             <p class="muted">
               This server is for parents, guardians, and invited staff of
-              {{GROUP_NAME}}.
-              We ask everyone to:
+              KEPS Parents.
+              It is an informal, parent-run community and is not an official
+              communication channel of the school or school board. We ask
+              everyone to follow these rules:
             </p>
             <ul class="list">
-              <li>Be respectful and kind in all conversations</li>
-              <li>Protect student privacy and avoid sharing sensitive information</li>
-              <li>Contact the moderators if something makes you uncomfortable</li>
+              <li>Protect kids’ privacy: no sharing children’s full names, photos, schedules, locations, or identifying details.</li>
+              <li>Respect staff: no badmouthing or personal attacks on teachers, staff, or administrators.</li>
+              <li>Be kind and civil: disagree with ideas, not people; no harassment, bullying, or hate speech.</li>
+              <li>Keep it school-focused: use this space for questions, support, and information about our students and school community.</li>
+              <li>No spam or promotions: avoid ads, fundraising, or self-promotion unless approved by moderators.</li>
+              <li>Respect confidentiality: do not share screenshots or quotes from this server outside without permission.</li>
             </ul>
           </div>
         </section>
       </div>
 
       <footer>
-        Questions or feedback? Email
-        <a href="mailto:{{CONTACT_EMAIL}}">{{CONTACT_EMAIL}}</a>.
+        Made by and for the KEPS parent community.
       </footer>
     </div>
   </div>
